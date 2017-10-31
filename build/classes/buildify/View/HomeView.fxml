@@ -8,22 +8,22 @@
 
 <GridPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #cec2d3;" xmlns="http://javafx.com/javafx/8"
           xmlns:fx="http://javafx.com/fxml/1" fx:controller="buildify.Controller.HomeViewController">
-   <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" text="Welcome to CardBuilder" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-         <font>
-            <Font size="46.0" />
-         </font>
-      </Label>
-      <Button fx:id="startButton" onAction="#handleButtonAction" mnemonicParsing="false" prefHeight="31.0" prefWidth="146.0" style="-fx-background-color: #431f3e;" text="Lets Get Started!" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-   </children>
-   <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="177.0" minWidth="10.0" prefWidth="142.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="699.0" minWidth="10.0" prefWidth="518.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="259.0" minWidth="0.0" prefWidth="140.0" />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="194.0" minHeight="10.0" prefHeight="93.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="307.0" minHeight="10.0" prefHeight="307.0" vgrow="SOMETIMES" />
-   </rowConstraints>
+    <children>
+        <Label alignment="CENTER" contentDisplay="CENTER" text="Welcome to CardBuilder" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <font>
+                <Font size="46.0" />
+            </font>
+        </Label>
+        <Button fx:id="startButton" onAction="#handleButtonAction" mnemonicParsing="false" prefHeight="31.0" prefWidth="146.0" style="-fx-background-color: #431f3e;" text="Lets Get Started!" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+    </children>
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="177.0" minWidth="10.0" prefWidth="142.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="699.0" minWidth="10.0" prefWidth="518.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="259.0" minWidth="0.0" prefWidth="140.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="194.0" minHeight="10.0" prefHeight="93.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="307.0" minHeight="10.0" prefHeight="307.0" vgrow="SOMETIMES" />
+    </rowConstraints>
 </GridPane>

@@ -28,101 +28,98 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class Template3Controller implements Initializable {
-	// variables
-	ObservableList<String> comboItemsList = FXCollections.observableArrayList(
-			"Label", "Button", "TextField", "TextArea");
-	@FXML
-	private ScrollPane template3View;
-	@FXML
-	private ComboBox comboList;
-	@FXML
-	private Button addButton;
-	@FXML
-	private TextField NameText;
-	@FXML
-	private TextField ColorText;
-	@FXML
-	private AnchorPane createPane; //contains the editor
-	@FXML
-	private AnchorPane previewPane; //editable pane
-	@FXML
-	private MenuBar menuBar;
-	@FXML
-	private Menu fileMenu;
-	@FXML
-	private Menu editMenu;
-	@FXML
-	private MenuItem back;
-	@FXML
-	private MenuItem openT;
-	@FXML
-	private MenuItem newT;
-	@FXML
-	private MenuItem save;
-	@FXML
-	private MenuItem saveExit;
-	@FXML
-	private MenuItem help;
-	@FXML
-	private Button backButton;
-	@FXML
-	private Stage stage = null;
-	@FXML
-	private Parent root = null;
+    // variables
 
-	@FXML
-	private void handleButtonAction(ActionEvent event) throws IOException {
-		// checks which button does what
-		if (event.getSource() == addButton) {
-			String nameText = NameText.getText();
-			System.out.println(nameText);
+    ObservableList<String> comboItemsList = FXCollections.observableArrayList(
+            "Label", "Button", "TextField", "TextArea");
+    @FXML
+    private ScrollPane template3View;
+    @FXML
+    private ComboBox comboList;
+    @FXML
+    private Button addButton;
+    @FXML
+    private TextField NameText;
+    @FXML
+    private AnchorPane createPane; //contains the editor
+    @FXML
+    private AnchorPane previewPane; //editable pane
+    private MenuBar menuBar;
+    @FXML
+    private Menu fileMenu;
+    @FXML
+    private MenuItem back;
+    @FXML
+    private MenuItem openT;
+    @FXML
+    private MenuItem newT;
+    @FXML
+    private MenuItem save;
+    @FXML
+    private MenuItem saveExit;
+    @FXML
+    private MenuItem help;
+    @FXML
+    private Button backButton;
+    private Stage stage = null;
+    private Parent root = null;
+    @FXML
+    private Menu helpMenu;
+
+    @FXML
+    private void handleButtonAction(ActionEvent event) throws IOException {
+        // checks which button does what
+        if (event.getSource() == addButton) {
+            String nameText = NameText.getText();
+            System.out.println(nameText);
 //			System.out.println(comboList.getValue());
-			
-			previewPane.getChildren().add(new Label(nameText));
-		
-		} else if(event.getSource() == backButton){
-			 stage = (Stage) backButton.getScene().getWindow();
-			 //load up OTHER FXML document
-			 root = FXMLLoader.load(Buildify.class.getResource("View/TemplateView.fxml"));
-			// create a new scene with root and set the stage
-			 Scene scene = new Scene(root);
-			 stage.setScene(scene);
-			 stage.show();
 
-		}else{
-			System.exit(0);
-			}
-	}
+            previewPane.getChildren().add(new Label(nameText));
 
-	@FXML
-	private void handleMenuAction(ActionEvent event) throws IOException {
-		if(event.getSource() == back){
-			stage = (Stage) menuBar.getScene().getWindow();
-			root = FXMLLoader.load(Buildify.class.getResource("View/TemplateView.fxml"));
-			Scene scene = new Scene(root);
-			 stage.setScene(scene);
-			 stage.show();
-		} else if(event.getSource() == openT){
-			System.out.println("open");
-		}else if(event.getSource() == newT){
-			System.out.println("new");
-		}else if(event.getSource() == save){
-			System.out.println("Saving...");
-		}else if(event.getSource() == saveExit){
-			System.out.println("Saving and exit.");
-		}else if(event.getSource() == help){
-			 Alert a = new Alert(Alert.AlertType.INFORMATION , "Developed by Alma Gonzalez", ButtonType.OK);
-             Optional<ButtonType> result =  a.showAndWait();
-		}else{
-			System.out.println("asdas");
-		}
+        } else if (event.getSource() == backButton) {
+            stage = (Stage) backButton.getScene().getWindow();
+            //load up OTHER FXML document
+            root = FXMLLoader.load(Buildify.class.getResource("View/TemplateView.fxml"));
+            // create a new scene with root and set the stage
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } else {
+            System.exit(0);
+        }
+    }
+
+    @FXML
+    private void handleMenuAction(ActionEvent event) throws IOException {
+        if (event.getSource() == back) {
+            stage = (Stage) menuBar.getScene().getWindow();
+            root = FXMLLoader.load(Buildify.class.getResource("View/TemplateView.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } else if (event.getSource() == openT) {
+            System.out.println("open");
+        } else if (event.getSource() == newT) {
+            System.out.println("new");
+        } else if (event.getSource() == save) {
+            System.out.println("Saving...");
+        } else if (event.getSource() == saveExit) {
+            System.out.println("Saving and exit.");
+        } else if (event.getSource() == help) {
+            Alert a = new Alert(Alert.AlertType.INFORMATION, "Developed by Alma Gonzalez", ButtonType.OK);
+            Optional<ButtonType> result = a.showAndWait();
+        } else {
+            System.out.println("asdas");
+        }
 //		Scene scene = new Scene(root);
 //		 stage.setScene(scene);
 //		 stage.show();
-	}
-	@Override
-	public void initialize(URL url, ResourceBundle rb) {
-		// setting the values into the choice box
-		comboList.setItems(comboItemsList);
-	}
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // setting the values into the choice box
+        comboList.setItems(comboItemsList);
+    }
 }

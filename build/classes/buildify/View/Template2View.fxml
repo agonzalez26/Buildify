@@ -9,89 +9,96 @@
 
 <ScrollPane fx:id="template2View" fitToHeight="true" fitToWidth="true" prefViewportHeight="600.0" prefViewportWidth="800.0" 
             style="-fx-background-color: cec2d3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="buildify.Controller.Template2Controller">
-   <content>
-   <BorderPane>
+    <content>
+        <BorderPane>
    
-   	<center><SplitPane dividerPositions="0.31453634085213034" style="-fx-background-color: cec2d3;">
-         <items>
-            <AnchorPane fx:id="createPane" maxWidth="350.0" minHeight="0.0" minWidth="250.0" prefHeight="602.0" prefWidth="248.0" style="-fx-background-color: #d1ece9;">
-               <children>
-                  <ComboBox fx:id="comboList" layoutX="43.0" layoutY="46.0" prefWidth="150.0" />
-                  <Button fx:id="addButton" layoutX="53.0" layoutY="456.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Add new Widget" />
-                        <GridPane layoutY="99.0" prefHeight="191.0" prefWidth="250.0">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="124.0" minWidth="10.0" prefWidth="48.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="194.0" minWidth="10.0" prefWidth="177.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                        <TextField fx:id="NameText" alignment="CENTER" prefHeight="31.0" prefWidth="126.0" GridPane.columnIndex="1">
-                                 <effect>
-                                    <Glow />
-                                 </effect>
-                              </TextField>
-                        <Label text="Name" />
-                           </children>
-                        </GridPane>
-                        <Button fx:id="backButton" layoutX="21.0" layoutY="521.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: #431f3e;;" text="Back" textFill="WHITE" />
-               </children>
-            </AnchorPane>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: cec2d3;">
-               <center>
-                  <AnchorPane fx:id="previewPane" minHeight="0.0" minWidth="0.0" prefHeight="1000.0" prefWidth="1000.0" style="-fx-background-color: #e3d7d5;" BorderPane.alignment="CENTER">
-                     <cursor>
-                        <Cursor fx:constant="DEFAULT" />
-                     </cursor>
-                           <children>
-                              <GridPane prefHeight="566.0" prefWidth="540.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                                 <children>
-                                    <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                 </children>
-                              </GridPane>
-                           </children>
-                  </AnchorPane>
-               </center>
-            </BorderPane>
-         </items>
-         <cursor>
-            <Cursor fx:constant="DEFAULT" />
-         </cursor>
-      </SplitPane></center>
-         <top>
-            <MenuBar fx:id="menuBar" style="-fx-background-color: #c7d7cf;" BorderPane.alignment="CENTER">
-              <menus>
-                <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
-                  <items>
-                        <MenuItem fx:id="back" onAction="#handleMenuAction" mnemonicParsing="false" text="Back" />
-                    	<MenuItem fx:id="newT" onAction="#handleMenuAction" mnemonicParsing="false" text="New Template" />
-                    	<MenuItem fx:id="openT" onAction="#handleMenuAction" mnemonicParsing="false" text="Open Template" />
-                        <MenuItem fx:id="save" onAction="#handleMenuAction" mnemonicParsing="false" text="Save" />
-                        <MenuItem fx:id="saveExit" onAction="#handleMenuAction" mnemonicParsing="false" text="Save &amp; Exit" />
-                  </items>
-                </Menu>
-                <Menu fx:id="helpMenu" mnemonicParsing="false" text="Help">
-                  <items>
-                    <MenuItem fx:id="help" onAction="#handleMenuAction" mnemonicParsing="false" text="About" />
-                  </items>
-                </Menu>
-              </menus>
-            </MenuBar>
-         </top>
-   </BorderPane>
-   </content>
+            <center>
+                <SplitPane dividerPositions="0.31453634085213034" style="-fx-background-color: cec2d3;">
+                    <items>
+                        <AnchorPane fx:id="createPane" maxWidth="350.0" minHeight="0.0" minWidth="250.0" prefHeight="602.0" prefWidth="248.0" style="-fx-background-color: #d1ece9;">
+                            <children>
+                                <ComboBox fx:id="comboList" layoutX="43.0" layoutY="46.0" prefWidth="150.0" />
+                                <Button fx:id="addButton" layoutX="53.0" layoutY="456.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Add new Widget" />
+                                <GridPane layoutY="99.0" prefHeight="191.0" prefWidth="250.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="124.0" minWidth="10.0" prefWidth="48.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="194.0" minWidth="10.0" prefWidth="177.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <TextField fx:id="NameText" alignment="CENTER" prefHeight="31.0" prefWidth="126.0" GridPane.columnIndex="1">
+                                            <effect>
+                                                <Glow />
+                                            </effect>
+                                        </TextField>
+                                        <Label text="Name" />
+                                    </children>
+                                </GridPane>
+                                <Button fx:id="backButton" layoutX="21.0" layoutY="521.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: #431f3e;;" text="Back" textFill="WHITE" />
+                            </children>
+                        </AnchorPane>
+                        <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: cec2d3;">
+                            <center>
+                                <AnchorPane fx:id="previewPane" minHeight="0.0" minWidth="0.0" prefHeight="1000.0" prefWidth="1000.0" style="-fx-background-color: #e3d7d5;" BorderPane.alignment="CENTER">
+                     
+                                    <children>
+                                        <GridPane prefHeight="566.0" prefWidth="540.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                                <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                            </children>
+                                        </GridPane>
+                                    </children>
+                                </AnchorPane>
+                            </center>
+                        </BorderPane>
+                    </items>
+         
+                </SplitPane>
+            </center>
+            <top>
+                <HBox prefHeight="8.0" prefWidth="813.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label alignment="TOP_CENTER" contentDisplay="CENTER" maxWidth="100.0" minWidth="75.0" prefWidth="100.0" text="Buildify" textAlignment="RIGHT" HBox.hgrow="ALWAYS">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <MenuBar prefHeight="25.0" prefWidth="331.0" HBox.hgrow="SOMETIMES">
+                            <menus>
+                                <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
+                                    <items>
+                                        <MenuItem fx:id="back" mnemonicParsing="false" onAction="#handleMenuAction" text="Back" />
+                                        <MenuItem fx:id="newT" mnemonicParsing="false" onAction="#handleMenuAction" text="New Template" />
+                                        <MenuItem fx:id="openT" mnemonicParsing="false" onAction="#handleMenuAction" text="Open Template" />
+                                        <MenuItem fx:id="save" mnemonicParsing="false" onAction="#handleMenuAction" text="Save" />
+                                        <MenuItem fx:id="saveExit" mnemonicParsing="false" onAction="#handleMenuAction" text="Save &amp; Exit" />
+                                    </items>
+                                </Menu>
+                                <Menu fx:id="helpMenu" mnemonicParsing="false" text="Help">
+                                    <items>
+                                        <MenuItem fx:id="help" mnemonicParsing="false" onAction="#handleMenuAction" text="About" />
+                                    </items>
+                                </Menu>
+                            </menus>
+                        </MenuBar>
+                    </children>
+                </HBox>
+            </top>
+        </BorderPane>
+    </content>
 </ScrollPane>

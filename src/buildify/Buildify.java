@@ -20,12 +20,12 @@ import javafx.stage.Stage;
  * @author agonzalez26
  */
 public class Buildify extends Application {
-    
+
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("View/HomeView.fxml"));        
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("View/HomeView.fxml"));
         Scene scene = new Scene(root);
-        
+
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -37,5 +37,5 @@ public class Buildify extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

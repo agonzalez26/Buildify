@@ -12,42 +12,38 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class HomeViewController implements Initializable {
-	@FXML
-	private Button startButton;
-	@FXML
-	private Stage stage = null;
-	@FXML
-	private Parent root = null;
-	
 
-	@FXML
-	private void handleButtonAction(ActionEvent event) throws IOException {
-		// checks which button does what
-		if (event.getSource() == startButton) {
-			// get reference to the button's stage
-			stage = (Stage) startButton.getScene().getWindow();
-			// load up OTHER FXML document
-			root = FXMLLoader.load(Buildify.class.getResource("View/TemplateView.fxml"));
+    @FXML
+    private Button startButton;
+    @FXML
+    private Stage stage = null;
+    @FXML
+    private Parent root = null;
 
-		} else {
-			System.exit(0);
-		}
-		// create a new scene with root and set the stage
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-	}
+    @FXML
+    private void handleButtonAction(ActionEvent event) throws IOException {
+        if (event.getSource() == startButton) {
+            // get reference to the button's stage
+            stage = (Stage) startButton.getScene().getWindow();
+            // load up OTHER FXML document
+            root = FXMLLoader.load(Buildify.class.getResource("View/TemplateView.fxml"));
 
-	@Override
-	public void initialize(URL url, ResourceBundle rb) {
-		// TODO
-		
-	}
+        } else {
+            System.exit(0);
+        }
+        // create a new scene with root and set the stage
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+
+    }
 
 }
