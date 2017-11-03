@@ -12,6 +12,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
 public class TemplateController implements Initializable {
@@ -26,6 +29,26 @@ public class TemplateController implements Initializable {
     private Button temp4Button;
     private Stage stage = null;
     private Parent root = null;
+    @FXML
+    private Menu fileMenu;
+    @FXML
+    private MenuItem back;
+    @FXML
+    private MenuItem newT;
+    @FXML
+    private MenuItem openT;
+    @FXML
+    private MenuItem save;
+    @FXML
+    private MenuItem saveScreenshot;
+    @FXML
+    private MenuItem saveExit;
+    @FXML
+    private Menu helpMenu;
+    @FXML
+    private MenuItem help;
+    @FXML
+    private MenuBar menuBar;
 
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {

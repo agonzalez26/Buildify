@@ -9,7 +9,7 @@
 <GridPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #cec2d3;" xmlns="http://javafx.com/javafx/8"
           xmlns:fx="http://javafx.com/fxml/1" fx:controller="buildify.Controller.HomeViewController">
     <children>
-        <Label alignment="CENTER" contentDisplay="CENTER" text="Welcome to CardBuilder" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+        <Label alignment="CENTER" contentDisplay="CENTER" text="Welcome to Buildify" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
             <font>
                 <Font size="46.0" />
             </font>

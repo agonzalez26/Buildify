@@ -5,6 +5,7 @@
  */
 package buildify;
 
+import buildify.Controller.Template2Controller;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -24,9 +25,10 @@ public class Buildify extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("View/HomeView.fxml"));
+
         Scene scene = new Scene(root);
 
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("Buildify");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
