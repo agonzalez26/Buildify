@@ -6,14 +6,17 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import buildify.Buildify;
+import java.io.File;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -24,26 +27,21 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
 
 public class Template4Controller implements Initializable {
     // variables
-
-    ObservableList<String> comboItemsList = FXCollections.observableArrayList(
-            "Label", "Button", "TextField", "TextArea");
     @FXML
     private ScrollPane template4View;
-    @FXML
-    private ComboBox comboList;
-    @FXML
-    private Button addButton;
-    @FXML
-    private TextField NameText;
     @FXML
     private AnchorPane createPane; //contains the editor
     @FXML
     private AnchorPane previewPane; //editable pane
+    @FXML
     private MenuBar menuBar;
     @FXML
     private Menu fileMenu;
@@ -53,42 +51,20 @@ public class Template4Controller implements Initializable {
     private MenuItem openT;
     @FXML
     private MenuItem newT;
-    @FXML
     private MenuItem save;
     @FXML
     private MenuItem saveExit;
     @FXML
     private MenuItem help;
-    @FXML
-    private Button backButton;
     private Stage stage = null;
     private Parent root = null;
     @FXML
     private Menu helpMenu;
-
+    private File fr;
     @FXML
-    private void handleButtonAction(ActionEvent event) throws IOException {
-        // checks which button does what
-        if (event.getSource() == addButton) {
-            String nameText = NameText.getText();
-            System.out.println(nameText);
-//			System.out.println(comboList.getValue());
+    private MenuItem saveScreenshot;
 
-            previewPane.getChildren().add(new Label(nameText));
-
-        } else if (event.getSource() == backButton) {
-            stage = (Stage) backButton.getScene().getWindow();
-            //load up OTHER FXML document
-            root = FXMLLoader.load(Buildify.class.getResource("View/TemplateView.fxml"));
-            // create a new scene with root and set the stage
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-
-        } else {
-            System.exit(0);
-        }
-    }
+ 
 
     @FXML
     private void handleMenuAction(ActionEvent event) throws IOException {
@@ -101,15 +77,22 @@ public class Template4Controller implements Initializable {
         } else if (event.getSource() == openT) {
             System.out.println("open");
         } else if (event.getSource() == newT) {
-            System.out.println("new");
+            System.out.println("new Template");
+            stage = (Stage) menuBar.getScene().getWindow();
+            root = FXMLLoader.load(Buildify.class.getResource("View/TemplateView.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } else if (event.getSource() == save) {
             System.out.println("Saving...");
+        } else if (event.getSource() == saveScreenshot) {
+            saveTemplate();
         } else if (event.getSource() == saveExit) {
             System.out.println("Saving and exit.");
         } else if (event.getSource() == help) {
 
             Alert a = new Alert(Alert.AlertType.INFORMATION, "Developed by Alma Gonzalez", ButtonType.OK);
-            Optional<ButtonType> result = a.showAndWait();
+            a.showAndWait();
         } else {
             System.exit(0);
         }
@@ -118,9 +101,26 @@ public class Template4Controller implements Initializable {
 //		 stage.show();
     }
 
+    private void saveTemplate() throws IOException {
+        WritableImage screenshot = previewPane.snapshot(new SnapshotParameters(), null);
+        fr = new File("Template3Screenshot.jpg");
+        try {
+            ImageIO.write(SwingFXUtils.fromFXImage(screenshot, null), "jpg", fr);
+            Alert a = new Alert(Alert.AlertType.CONFIRMATION, "Screenshot saved: " + fr.getAbsolutePath(), ButtonType.OK);
+            a.showAndWait();
+        } catch (IOException e) {
+            Alert a = new Alert(Alert.AlertType.ERROR, "Screenshot Not Saved", ButtonType.OK);
+            a.showAndWait();
+    }
+
+    }
+
+    private void displayError() {
+        Alert a = new Alert(Alert.AlertType.ERROR, "No Choice Selected", ButtonType.OK);
+        a.showAndWait();
+    }
+
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // setting the values into the choice box
-        comboList.setItems(comboItemsList);
+    public void initialize(URL location, ResourceBundle resources) {
     }
 }

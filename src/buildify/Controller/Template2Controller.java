@@ -94,6 +94,14 @@ public class Template2Controller implements Initializable {
     private Slider fontSizeSlider;
     @FXML
     private Button imageChooser;
+    @FXML
+    private ScrollPane template2View;
+    @FXML
+    private AnchorPane createPane;
+    @FXML
+    private Slider widthSlider;
+    @FXML
+    private Slider heightSlider;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -104,6 +112,8 @@ public class Template2Controller implements Initializable {
         colorPicker.setDisable(true);
         imageChooser.setDisable(true);
         addButton.setDisable(true);
+        widthSlider.setDisable(true);
+        heightSlider.setDisable(true);
         try {
             handleComboBoxAction(comboList);
         } catch (IOException ex) {
@@ -115,7 +125,7 @@ public class Template2Controller implements Initializable {
     private void handleButtonAction(ActionEvent event) throws IOException {
         if (event.getSource() == addButton) {
             if (comboList.getValue() == "Text") {
-                
+
                 System.out.println("Text");
 
                 newLabel = new Label();
@@ -154,7 +164,7 @@ public class Template2Controller implements Initializable {
                     }
 
                 });
-               
+
                 previewPane.getChildren().add(newLabel);
 
             } else if (comboList.getValue() == "Button") {
@@ -197,8 +207,11 @@ public class Template2Controller implements Initializable {
                 });
                 previewPane.getChildren().add(newButton);
             } else if (comboList.getValue() == "Image") {
+
                 System.out.println("Image");
-//                newImage = new Image("asdsa");
+                imgView.setFitWidth(widthSlider.getValue());
+                imgView.setFitHeight(heightSlider.getValue());
+                imageChooser.setText("Choose Image");
                 imgView.addEventHandler(MouseEvent.MOUSE_DRAGGED, new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent t) {
@@ -231,8 +244,7 @@ public class Template2Controller implements Initializable {
                     }
 
                 });
-               
-                
+
                 previewPane.getChildren().add(imgView);
 
             } else {
@@ -279,18 +291,24 @@ public class Template2Controller implements Initializable {
                         colorPicker.setDisable(false);
                         imageChooser.setDisable(true);
                         addButton.setDisable(false);
+                        widthSlider.setDisable(true);
+                        heightSlider.setDisable(true);
                     } else if (comboList.getValue() == "Button") {
                         NameText.setDisable(false);
                         fontSizeSlider.setDisable(false);
                         colorPicker.setDisable(false);
                         imageChooser.setDisable(true);
                         addButton.setDisable(false);
+                        widthSlider.setDisable(true);
+                        heightSlider.setDisable(true);
                     } else {
                         NameText.setDisable(true);
                         fontSizeSlider.setDisable(true);
                         colorPicker.setDisable(true);
                         imageChooser.setDisable(false);
                         addButton.setDisable(true);
+                        widthSlider.setDisable(false);
+                        heightSlider.setDisable(false);
                     }
                 }
         );
@@ -311,10 +329,10 @@ public class Template2Controller implements Initializable {
                 System.out.println(fr.toURI().toString());
                 newImage = new Image(imagePath);
                 imgView = new ImageView(newImage);
-//                designPane.add(myImageView, 2, 2);
-//                
+
             } else {
                 addButton.setDisable(true);
+                imageChooser.setText("Choose Image");
                 displayFileError();
             }
         }
@@ -356,22 +374,21 @@ public class Template2Controller implements Initializable {
             System.out.println("asdas");
         }
     }
-    //works
+
     private void saveTemplate() throws IOException {
         WritableImage screenshot = previewPane.snapshot(new SnapshotParameters(), null);
         fr = new File("Template2Screenshot.jpg");
-        try{
+        try {
             ImageIO.write(SwingFXUtils.fromFXImage(screenshot, null), "jpg", fr);
-            Alert a = new Alert(Alert.AlertType.ERROR, "Screenshot saved: " + fr.getAbsolutePath(), ButtonType.OK);
+            Alert a = new Alert(Alert.AlertType.CONFIRMATION, "Screenshot saved: " + fr.getAbsolutePath(), ButtonType.OK);
             a.showAndWait();
-//            System.out.println("screenshot saved at: " + fr.getAbsolutePath());
-        }catch(IOException e){
+        } catch (IOException e) {
             Alert a = new Alert(Alert.AlertType.ERROR, "Screenshot Not Saved", ButtonType.OK);
             a.showAndWait();
         }
 
     }
-    //works
+
     private void displayError() {
         Alert a = new Alert(Alert.AlertType.ERROR, "No Choice Selected", ButtonType.OK);
         a.showAndWait();
