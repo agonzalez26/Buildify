@@ -10,6 +10,9 @@ import buildify.Buildify;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
@@ -18,6 +21,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -34,6 +38,8 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
+import javafx.scene.control.SplitPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -41,26 +47,21 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 
 public class Template1Controller implements Initializable {
-    // variables
 
-    ObservableList<String> comboItemsList = FXCollections.observableArrayList(
-            "Text", "Button", "Image");
-    @FXML
-    private ScrollPane template1View;
-    @FXML
-    private ComboBox comboList;
-    @FXML
-    private Button addButton;
-    @FXML
-    private TextField NameText;
     @FXML
     private AnchorPane createPane; //contains the editor
     @FXML
@@ -88,258 +89,159 @@ public class Template1Controller implements Initializable {
     double orgSceneX, orgSceneY;
     double orgTranslateX, orgTranslateY;
 
-    @FXML
-    private ColorPicker colorPicker;
+//    private ColorPicker colorPicker;
     private Node anynode;
     private Button newButton;
     private Label newLabel;
     private Image newImage;
     private ImageView imgView;
+    private ImageView logoView;
     @FXML
     private MenuItem saveScreenshot;
     private FileChooser chooser;
     private File fr;
     @FXML
-    private GridPane editTable;
-    private Label tableName;
-    @FXML
-    private Slider fontSizeSlider;
-    @FXML
     private Button imageChooser;
+
     @FXML
-    private Slider widthSlider;
+    private ScrollPane templat12View;
+    Date date = new Date();
+    DateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy");
     @FXML
-    private Slider heightSlider;
+    private GridPane editTable;
+    @FXML
+    private TextField TitleText;
+    @FXML
+    private Label titleLabel;
+    @FXML
+    private Label dateLabel;
+    @FXML
+    private Pane contentPane1;
+    @FXML
+    private Pane contentPane2;
+    @FXML
+    private Pane imagePane;
+    @FXML
+    private Pane logoPane;
+    @FXML
+    private Pane titlePane;
+    @FXML
+    private Button logoChooser;
+    @FXML
+    private Label contentPane1Label;
+    @FXML
+    private Label contentPane2Label;
+    @FXML
+    private TextArea contentArea1;
+    @FXML
+    private TextArea contentArea2;
+    @FXML
+    private Label logoLabel;
+    @FXML
+    private Label imageLabel;
+    @FXML
+    private SplitPane splitPane;
+    @FXML
+    private ColorPicker backColorPicker;
+    @FXML
+    private ColorPicker textColorPicker;
+    String currentDate;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // setting the values into the choice box
-        comboList.setItems(comboItemsList);
-        NameText.setDisable(true);
-        fontSizeSlider.setDisable(true);
-        colorPicker.setDisable(true);
-        imageChooser.setDisable(true);
-        addButton.setDisable(true);
-        widthSlider.setDisable(true);
-        heightSlider.setDisable(true);
-        try {
-            handleComboBoxAction(comboList);
-        } catch (IOException ex) {
-        }
+        currentDate = dateFormat.format(date);
+        dateLabel.setText(currentDate);
+        titleLabel.setFont(new Font(30.0));
+        titleLabel.textProperty().bind(TitleText.textProperty());
+        contentPane1Label.textProperty().bind(contentArea1.textProperty());
+        contentPane2Label.textProperty().bind(contentArea2.textProperty());
+        contentArea1.prefWidthProperty().bind(contentPane1.prefWidthProperty());
+        contentArea2.prefWidthProperty().bind(contentPane2.prefWidthProperty());
 
     }
 
     @FXML
-    private void handleButtonAction(ActionEvent event) throws IOException {
-        if (event.getSource() == addButton) {
-            if (comboList.getValue() == "Text") {
+    private void colorChangeAction(ActionEvent event) {
+        if(event.getSource() == backColorPicker){
+            backColorPicker.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent t) {
 
-                System.out.println("Text");
+                    colorChanger(t);
 
-                newLabel = new Label();
-                newLabel.setText(NameText.getText());
-                newLabel.setFont(Font.font(fontSizeSlider.getValue()));
-                newLabel.setTextFill(colorPicker.getValue());
-                newLabel.addEventHandler(MouseEvent.MOUSE_DRAGGED, new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent t) {
-                        try {
-                            nodeDrag(t);
-                        } catch (IOException e) {
-
-                        }
-
-                    }
-                });
-                newLabel.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent t) {
-                        try {
-                            nodePress(t);
-                        } catch (IOException e) {
-
-                        }
-
-                    }
-                });
-                newLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent t) {
-                        try {
-                            nodeRemove(t);
-                        } catch (IOException ex) {
-                        }
-                    }
-
-                });
-
-                previewPane.getChildren().add(newLabel);
-
-            } else if (comboList.getValue() == "Button") {
-                System.out.println("Button");
-                newButton = new Button();
-                newButton.setText(NameText.getText());
-                newButton.setFont(Font.font(fontSizeSlider.getValue()));
-                newButton.setTextFill(colorPicker.getValue());
-                newButton.addEventHandler(MouseEvent.MOUSE_DRAGGED, new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent t) {
-                        try {
-                            nodeDrag(t);
-                        } catch (IOException e) {
-
-                        }
-
-                    }
-                });
-                newButton.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent t) {
-                        try {
-                            nodePress(t);
-                        } catch (IOException e) {
-
-                        }
-
-                    }
-                });
-                newButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent t) {
-                        try {
-                            nodeRemove(t);
-                        } catch (IOException ex) {
-                        }
-                    }
-
-                });
-                previewPane.getChildren().add(newButton);
-            } else if (comboList.getValue() == "Image") {
-                System.out.println("Image");
-                imgView.setFitWidth(widthSlider.getValue());
-                imgView.setFitHeight(heightSlider.getValue());
-                imageChooser.setText("Choose Image");
-                imgView.addEventHandler(MouseEvent.MOUSE_DRAGGED, new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent t) {
-                        try {
-                            nodeDrag(t);
-                        } catch (IOException e) {
-
-                        }
-
-                    }
-                });
-                imgView.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent t) {
-                        try {
-                            nodePress(t);
-                        } catch (IOException e) {
-
-                        }
-
-                    }
-                });
-                imgView.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent t) {
-                        try {
-                            nodeRemove(t);
-                        } catch (IOException ex) {
-                        }
-                    }
-
-                });
-
-                previewPane.getChildren().add(imgView);
-
-            } else {
-                displayError();
-            }
-        } else {
-            System.exit(0);
-        }
-    }
-
-    private void nodeRemove(MouseEvent event) throws IOException {
-        if (event.getButton().equals(MouseButton.PRIMARY)) {
-            if (event.getClickCount() == 2) {
-                System.out.println("double clicked");
-                previewPane.getChildren().remove(((Node) (event.getSource())));
-            }
-        }
-
-    }
-
-    private void nodeDrag(MouseEvent event) throws IOException {
-        double offsetX = event.getSceneX() - orgSceneX;
-        double offsetY = event.getSceneY() - orgSceneY;
-        double newTranslateX = orgTranslateX + offsetX;
-        double newTranslateY = orgTranslateY + offsetY;
-
-        ((Node) (event.getSource())).setTranslateX(newTranslateX);
-        ((Node) (event.getSource())).setTranslateY(newTranslateY);
-    }
-
-    private void nodePress(MouseEvent t) throws IOException {
-        orgSceneX = t.getSceneX();
-        orgSceneY = t.getSceneY();
-        orgTranslateX = ((Node) (t.getSource())).getTranslateX();
-        orgTranslateY = ((Node) (t.getSource())).getTranslateY();
-    }
-
-    private void handleComboBoxAction(ComboBox comboList) throws IOException {
-        comboList.getSelectionModel().selectedItemProperty().addListener(
-                (ob, old_val, new_val) -> {
-                    if (comboList.getValue() == "Text") {
-                        NameText.setDisable(false);
-                        fontSizeSlider.setDisable(false);
-                        colorPicker.setDisable(false);
-                        imageChooser.setDisable(true);
-                        addButton.setDisable(false);
-                        widthSlider.setDisable(true);
-                        heightSlider.setDisable(true);
-                    } else if (comboList.getValue() == "Button") {
-                        NameText.setDisable(false);
-                        fontSizeSlider.setDisable(false);
-                        colorPicker.setDisable(false);
-                        imageChooser.setDisable(true);
-                        addButton.setDisable(false);
-                        widthSlider.setDisable(true);
-                        heightSlider.setDisable(true);
-                    } else {
-                        NameText.setDisable(true);
-                        fontSizeSlider.setDisable(true);
-                        colorPicker.setDisable(true);
-                        imageChooser.setDisable(false);
-                        addButton.setDisable(true);
-                        widthSlider.setDisable(false);
-                        heightSlider.setDisable(false);
-                    }
                 }
-        );
+
+                private void colorChanger(ActionEvent t) {
+                    Paint fill = backColorPicker.getValue();
+                    BackgroundFill backgroundFill = new BackgroundFill(fill, CornerRadii.EMPTY, Insets.EMPTY);
+                    Background background = new Background(backgroundFill);
+                    splitPane.setBackground(background);
+                }
+
+            });
+        }else if(event.getSource() == textColorPicker){
+//            contentArea1.textProperty().bind(textColorPicker.valueProperty());
+            textColorPicker.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent t) {
+
+                    colorChanger(t);
+
+                }
+
+                private void colorChanger(ActionEvent t) {
+                    contentPane1Label.setTextFill(textColorPicker.getValue());
+                    contentPane2Label.setTextFill(textColorPicker.getValue());
+                    titleLabel.setTextFill(textColorPicker.getValue());
+                    dateLabel.setTextFill(textColorPicker.getValue());
+                }
+
+            });
+        }
     }
 
     @FXML
     private void handleImageChooser(ActionEvent event) throws IOException {
         if (event.getSource() == imageChooser) {
             chooser = new FileChooser();
-            chooser.setTitle("Choose a file");
+            chooser.setTitle("Choose an Image");
             chooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.png", "*.gif"));
             fr = chooser.showOpenDialog(stage);
 
             if (fr != null) {
-                addButton.setDisable(false);
                 imageChooser.setText(fr.getName());
                 String imagePath = fr.toURI().toURL().toString();
                 System.out.println(fr.toURI().toString());
                 newImage = new Image(imagePath);
                 imgView = new ImageView(newImage);
-//                designPane.add(myImageView, 2, 2);
-//                
+                imgView.setFitWidth(235);
+                imgView.setFitHeight(275);
+                imgView.fitWidthProperty().bind(imagePane.widthProperty());
+                imgView.fitHeightProperty().bind(imagePane.heightProperty());
+
+                imagePane.getChildren().add(imgView);
+
             } else {
-                addButton.setDisable(true);
+                displayFileError();
+            }
+        } else if (event.getSource() == logoChooser) {
+            chooser = new FileChooser();
+            chooser.setTitle("Choose a Logo");
+            chooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.png", "*.gif"));
+            fr = chooser.showOpenDialog(stage);
+
+            if (fr != null) {
+                logoChooser.setText(fr.getName());
+                String imagePath = fr.toURI().toURL().toString();
+                System.out.println(fr.toURI().toString());
+                newImage = new Image(imagePath);
+                logoView = new ImageView(newImage);
+
+                logoView.fitWidthProperty().bind(logoPane.widthProperty());
+                logoView.fitHeightProperty().bind(logoPane.heightProperty());
+                logoPane.getChildren().add(logoView);
+
+            } else {
                 displayFileError();
             }
         }
@@ -399,18 +301,3 @@ public class Template1Controller implements Initializable {
         a.showAndWait();
     }
 }
-
-///screenshot
-//http://code.makery.ch/blog/javafx-2-snapshot-as-png-image/
-//combobox stuff https://stackoverflow.com/questions/13032257/combo-box-javafx-with-fxml
-//double clicking
-//myNode.setOnMouseClicked(new EventHandler<MouseEvent>() {
-//    @Override
-//    public void handle(MouseEvent mouseEvent) {
-//        if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
-//            if(mouseEvent.getClickCount() == 2){
-//                System.out.println("Double clicked");
-//            }
-//        }
-//    }
-//});

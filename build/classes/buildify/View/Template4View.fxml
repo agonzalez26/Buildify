@@ -30,7 +30,8 @@
                     <items>
                         <AnchorPane fx:id="createPane" maxWidth="350.0" minHeight="0.0" minWidth="250.0" prefHeight="602.0" prefWidth="248.0" style="-fx-background-color: #faebd7;">
                             <children>
-                                <ComboBox fx:id="comboList" layoutX="43.0" layoutY="46.0" prefWidth="150.0" />
+                                <!--where you add your code-->
+                                <!--                                <ComboBox fx:id="comboList" layoutX="43.0" layoutY="46.0" prefWidth="150.0" />
                                 <Button fx:id="addButton" layoutX="53.0" layoutY="456.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Add new Widget" />
                                 <GridPane fx:id="editTable" layoutY="99.0" prefHeight="265.0" prefWidth="250.0">
                                     <columnConstraints>
@@ -52,7 +53,7 @@
                                         <Label text="Name" />
                                     </children>
                                 </GridPane>
-                                <Button fx:id="backButton" layoutX="21.0" layoutY="521.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: #431f3e;;" text="Back" textFill="WHITE" />
+                                <Button fx:id="backButton" layoutX="21.0" layoutY="521.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: #431f3e;;" text="Back" textFill="WHITE" />-->
                             </children>
                         </AnchorPane>
                         <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: cec2d3;">
@@ -60,7 +61,8 @@
                                 <AnchorPane fx:id="previewPane" minHeight="0.0" minWidth="0.0" prefHeight="1000.0" prefWidth="1000.0" style="-fx-background-color: #adcbe3;" BorderPane.alignment="CENTER">
                   
                                     <children>
-                                        <GridPane prefHeight="566.0" prefWidth="540.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <!--where you add your code-->
+                                        <!--                                        <GridPane prefHeight="566.0" prefWidth="540.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -74,7 +76,7 @@
                                             <children>
                                                 <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                             </children>
-                                        </GridPane>
+                                        </GridPane>-->
                                     </children>
                                 </AnchorPane>
                             </center>

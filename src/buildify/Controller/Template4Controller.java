@@ -34,6 +34,7 @@ import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 
 public class Template4Controller implements Initializable {
+
     // variables
     @FXML
     private ScrollPane template4View;
@@ -63,8 +64,6 @@ public class Template4Controller implements Initializable {
     private File fr;
     @FXML
     private MenuItem saveScreenshot;
-
- 
 
     @FXML
     private void handleMenuAction(ActionEvent event) throws IOException {
@@ -111,7 +110,7 @@ public class Template4Controller implements Initializable {
         } catch (IOException e) {
             Alert a = new Alert(Alert.AlertType.ERROR, "Screenshot Not Saved", ButtonType.OK);
             a.showAndWait();
-    }
+        }
 
     }
 
