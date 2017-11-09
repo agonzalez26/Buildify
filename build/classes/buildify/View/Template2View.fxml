@@ -72,7 +72,6 @@
                                         <Font size="18.0" />
                                     </font>
                                 </Label>
-                                <!--                                <Button fx:id="backButton" layoutX="21.0" layoutY="521.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: #431f3e;;" text="Back" textFill="WHITE" />-->
                             </children>
                         </AnchorPane>
                         <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: cec2d3;">
@@ -106,9 +105,10 @@
                                         <MenuItem fx:id="saveExit" mnemonicParsing="false" onAction="#handleMenuAction" text="Save &amp; Exit" />
                                     </items>
                                 </Menu>
-                                <Menu fx:id="helpMenu" mnemonicParsing="false" text="Help">
+                                <Menu fx:id="helpMenu" mnemonicParsing="false" text="About">
                                     <items>
-                                        <MenuItem fx:id="help" mnemonicParsing="false" onAction="#handleMenuAction" text="About" />
+                                        <MenuItem fx:id="aboutA" onAction="#handleMenuAction"  mnemonicParsing="false" text="AG" />
+                                        <MenuItem fx:id="aboutM" onAction="#handleMenuAction"  mnemonicParsing="false" text="M" />                                    
                                     </items>
                                 </Menu>
                             </menus>

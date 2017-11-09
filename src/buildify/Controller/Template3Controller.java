@@ -54,7 +54,6 @@ public class Template3Controller implements Initializable {
     private MenuItem save;
     @FXML
     private MenuItem saveExit;
-    @FXML
     private MenuItem help;
     private Stage stage = null;
     private Parent root = null;
@@ -63,6 +62,10 @@ public class Template3Controller implements Initializable {
     private File fr;
     @FXML
     private MenuItem saveScreenshot;
+    @FXML
+    private MenuItem aboutA;
+    @FXML
+    private MenuItem aboutM;
 
     @FXML
     private void handleMenuAction(ActionEvent event) throws IOException {
@@ -87,8 +90,11 @@ public class Template3Controller implements Initializable {
             saveTemplate();
         } else if (event.getSource() == saveExit) {
             System.out.println("Saving and exit.");
-        } else if (event.getSource() == help) {
+        } else if (event.getSource() == aboutA) {
             Alert a = new Alert(Alert.AlertType.INFORMATION, "Developed by Alma Gonzalez", ButtonType.OK);
+            a.showAndWait();
+        } else if(event.getSource() == aboutM){
+             Alert a = new Alert(Alert.AlertType.INFORMATION, "Developed by Maia Ross", ButtonType.OK);
             a.showAndWait();
         } else {
             System.out.println("asdas");

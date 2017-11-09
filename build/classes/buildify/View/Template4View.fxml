@@ -104,9 +104,10 @@
                                         <MenuItem fx:id="saveExit" mnemonicParsing="false" onAction="#handleMenuAction" text="Save &amp; Exit" />
                                     </items>
                                 </Menu>
-                                <Menu fx:id="helpMenu" mnemonicParsing="false" text="Help">
+                                <Menu fx:id="helpMenu" mnemonicParsing="false" text="About">
                                     <items>
-                                        <MenuItem fx:id="help" mnemonicParsing="false" onAction="#handleMenuAction" text="About" />
+                                        <MenuItem fx:id="aboutA" onAction="#handleMenuAction"  mnemonicParsing="false" text="AG" />
+                                        <MenuItem fx:id="aboutM" onAction="#handleMenuAction"  mnemonicParsing="false" text="M" />                                    
                                     </items>
                                 </Menu>
                             </menus>
