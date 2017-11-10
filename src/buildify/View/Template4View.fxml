@@ -100,6 +100,8 @@
                                         <MenuItem fx:id="back" mnemonicParsing="false" onAction="#handleMenuAction" text="Back" />
                                         <MenuItem fx:id="newT" mnemonicParsing="false" onAction="#handleMenuAction" text="New Template" />
                                         <MenuItem fx:id="openT" mnemonicParsing="false" onAction="#handleMenuAction" text="Open Template" />
+                                        <MenuItem fx:id="save" onAction="#handleMenuAction" mnemonicParsing="false" text="Save" />
+
                                         <MenuItem fx:id="saveScreenshot" mnemonicParsing="false" onAction="#handleMenuAction" text="Save Screenshot" />
                                         <MenuItem fx:id="saveExit" mnemonicParsing="false" onAction="#handleMenuAction" text="Save &amp; Exit" />
                                     </items>

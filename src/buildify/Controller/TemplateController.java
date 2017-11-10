@@ -37,7 +37,6 @@ public class TemplateController implements Initializable {
     @FXML
     private Button backButton;
 
-
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
         // checks which button does what
@@ -66,12 +65,12 @@ public class TemplateController implements Initializable {
             // load up OTHER FXML document
             root = FXMLLoader.load(Buildify.class.getResource("View/Template4View.fxml"));
 
-        } else if(event.getSource() == backButton){
+        } else if (event.getSource() == backButton) {
             // get reference to the button's stage
             stage = (Stage) backButton.getScene().getWindow();
             // load up OTHER FXML document
             root = FXMLLoader.load(Buildify.class.getResource("View/HomeView.fxml"));
-        }else {
+        } else {
             System.exit(0);
         }
         // create a new scene with root and set the stage
@@ -79,7 +78,6 @@ public class TemplateController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

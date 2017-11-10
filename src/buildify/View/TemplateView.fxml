@@ -31,7 +31,7 @@
             </children>
         </HBox>
     </top>
-   <bottom>
+    <bottom>
         <GridPane alignment="TOP_CENTER" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #cec2d3;" BorderPane.alignment="CENTER">
             <children>
                 <Button fx:id="temp1Button" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="120.0" prefWidth="125.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
@@ -95,7 +95,7 @@
                         <Font size="48.0" />
                     </font>
                 </Label>
-            <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="31.0" prefWidth="146.0" style="-fx-background-color: #431f3e;" text="Back" textFill="WHITE" GridPane.rowIndex="6" />
+                <Button fx:id="backButton" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="31.0" prefWidth="146.0" style="-fx-background-color: #431f3e;" text="Back" textFill="WHITE" GridPane.rowIndex="6" />
             </children>
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="183.0" minWidth="10.0" prefWidth="112.66668701171875" />
@@ -116,5 +116,5 @@
                 <RowConstraints maxHeight="307.0" minHeight="7.0" prefHeight="52.0" vgrow="SOMETIMES" />
             </rowConstraints>
         </GridPane>
-   </bottom>
+    </bottom>
 </BorderPane>
