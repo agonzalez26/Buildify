@@ -11,7 +11,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
 public class TemplateController implements Initializable {
@@ -26,6 +31,11 @@ public class TemplateController implements Initializable {
     private Button temp4Button;
     private Stage stage = null;
     private Parent root = null;
+
+    @FXML
+    private MenuBar menuBar;
+    @FXML
+    private Button backButton;
 
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
@@ -55,6 +65,11 @@ public class TemplateController implements Initializable {
             // load up OTHER FXML document
             root = FXMLLoader.load(Buildify.class.getResource("View/Template4View.fxml"));
 
+        } else if (event.getSource() == backButton) {
+            // get reference to the button's stage
+            stage = (Stage) backButton.getScene().getWindow();
+            // load up OTHER FXML document
+            root = FXMLLoader.load(Buildify.class.getResource("View/HomeView.fxml"));
         } else {
             System.exit(0);
         }
