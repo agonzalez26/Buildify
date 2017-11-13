@@ -77,10 +77,6 @@ public class Template1Controller implements Initializable {
     //works for the onDrag methods inside the fxml
     double orgSceneX, orgSceneY;
     double orgTranslateX, orgTranslateY;
-
-//    private Node anynode;
-//    private Button newButton;
-//    private Label newLabel;
     private Image newImage;
     private ImageView imgView;
     private ImageView logoView;
@@ -90,13 +86,8 @@ public class Template1Controller implements Initializable {
     private File fr;
     @FXML
     private Button imageChooser;
-
-//    @FXML
-//    private ScrollPane templat12View;
     Date date = new Date();
     DateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy");
-//    @FXML
-//    private GridPane editTable;
     @FXML
     private TextField TitleText;
     @FXML
@@ -123,10 +114,6 @@ public class Template1Controller implements Initializable {
     private TextArea contentArea1;
     @FXML
     private TextArea contentArea2;
-//    @FXML
-//    private Label logoLabel;
-//    @FXML
-//    private Label imageLabel;
     @FXML
     private SplitPane splitPane;
     @FXML

@@ -46,7 +46,7 @@ public class Template2Controller implements Initializable {
     // variables
 
     ObservableList<String> comboItemsList = FXCollections.observableArrayList(
-            "Text", "Button", "Image");
+            "Text", "Image");
     @FXML
     private ComboBox comboList;
     @FXML
@@ -173,46 +173,7 @@ public class Template2Controller implements Initializable {
 
                 previewPane.getChildren().add(newLabel);
 
-            } else if (comboList.getValue() == "Button") {
-                System.out.println("Button");
-                newButton = new Button();
-                newButton.setText(NameText.getText());
-                newButton.setFont(Font.font(fontSizeSlider.getValue()));
-                newButton.setTextFill(colorPicker.getValue());
-                newButton.addEventHandler(MouseEvent.MOUSE_DRAGGED, new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent t) {
-                        try {
-                            nodeDrag(t);
-                        } catch (IOException e) {
-
-                        }
-
-                    }
-                });
-                newButton.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent t) {
-                        try {
-                            nodePress(t);
-                        } catch (IOException e) {
-
-                        }
-
-                    }
-                });
-                newButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent t) {
-                        try {
-                            nodeRemove(t);
-                        } catch (IOException ex) {
-                        }
-                    }
-
-                });
-                previewPane.getChildren().add(newButton);
-            } else if (comboList.getValue() == "Image") {
+            }else if (comboList.getValue() == "Image") {
 
                 System.out.println("Image");
                 imgView.setFitWidth(widthSlider.getValue());
@@ -299,15 +260,7 @@ public class Template2Controller implements Initializable {
                         addButton.setDisable(false);
                         widthSlider.setDisable(true);
                         heightSlider.setDisable(true);
-                    } else if (comboList.getValue() == "Button") {
-                        NameText.setDisable(false);
-                        fontSizeSlider.setDisable(false);
-                        colorPicker.setDisable(false);
-                        imageChooser.setDisable(true);
-                        addButton.setDisable(false);
-                        widthSlider.setDisable(true);
-                        heightSlider.setDisable(true);
-                    } else {
+                    }else {
                         NameText.setDisable(true);
                         fontSizeSlider.setDisable(true);
                         colorPicker.setDisable(true);
@@ -438,3 +391,53 @@ public class Template2Controller implements Initializable {
 //https://stackoverflow.com/questions/43260526/how-to-add-a-group-to-the-scene-in-javafx
 //http://www.crazyandcoding.com/blog/post/javafx-make-a-node-draggable/
 //http://java-buddy.blogspot.com/2013/07/javafx-drag-and-move-something.html
+/*
+//                    else if (comboList.getValue() == "Button") {
+//                        NameText.setDisable(false);
+//                        fontSizeSlider.setDisable(false);
+//                        colorPicker.setDisable(false);
+//                        imageChooser.setDisable(true);
+//                        addButton.setDisable(false);
+//                        widthSlider.setDisable(true);
+//                        heightSlider.setDisable(true);
+//                    }
+//            else if (comboList.getValue() == "Button") {
+//                System.out.println("Button");
+//                newButton = new Button();
+//                newButton.setText(NameText.getText());
+//                newButton.setFont(Font.font(fontSizeSlider.getValue()));
+//                newButton.setTextFill(colorPicker.getValue());
+//                newButton.addEventHandler(MouseEvent.MOUSE_DRAGGED, new EventHandler<MouseEvent>() {
+//                    @Override
+//                    public void handle(MouseEvent t) {
+//                        try {
+//                            nodeDrag(t);
+//                        } catch (IOException e) {
+//
+//                        }
+//
+//                    }
+//                });
+//                newButton.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+//                    @Override
+//                    public void handle(MouseEvent t) {
+//                        try {
+//                            nodePress(t);
+//                        } catch (IOException e) {
+//
+//                        }
+//
+//                    }
+//                });
+//                newButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+//                    @Override
+//                    public void handle(MouseEvent t) {
+//                        try {
+//                            nodeRemove(t);
+//                        } catch (IOException ex) {
+//                        }
+//                    }
+//
+//                });
+//                previewPane.getChildren().add(newButton);
+//            } */

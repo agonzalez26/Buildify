@@ -26,6 +26,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 
+//https://stackoverflow.com/questions/32342864/applying-mvc-with-javafx
 public class Template3Controller implements Initializable {
 
     @FXML
