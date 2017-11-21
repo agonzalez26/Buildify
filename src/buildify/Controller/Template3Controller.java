@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import buildify.Buildify;
+import buildify.Controller.Template3.ChoiceQuestion;
 import java.io.File;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -17,12 +18,14 @@ import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 
@@ -62,6 +65,48 @@ public class Template3Controller implements Initializable {
     private MenuItem aboutM;
     private Alert a;
     private Optional<ButtonType> result;
+    @FXML
+    ComboBox comboList;
+    @FXML
+    Pane pane;
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // setting the values into the choice box
+        comboList = new ComboBox<>();
+        comboList.getItems().addAll
+                ("Single-Choice Question",
+                "Multi-Choice Question",
+                "Text Question");
+        try {
+            handleComboBoxAction(comboList);
+        } catch (IOException ex) {
+        }
+    }
+    
+    private void handleComboBoxAction(ComboBox comboList) throws IOException {
+        comboList.getSelectionModel().selectedItemProperty().addListener(
+                (ob, old_val, new_val) -> {
+                    String chosen = (String) comboList.getValue();
+                    switch (chosen){
+                        case "Single-Choice Question":
+                        case "Multi-Choice Question":
+                            if (new_val == "Single-Choice Question"){
+                                ChoiceQuestion single = new ChoiceQuestion();
+                                pane.getChildren().add(single);
+                                System.out.println("bdsakhsdf");
+                            }
+                            break;
+                        case "Text Question":
+                            break;
+                        default:
+                            break;
+                    }
+                    
+                }
+        );
+    }
+
 
     @FXML
     private void handleMenuAction(ActionEvent event) throws IOException {
@@ -149,9 +194,5 @@ public class Template3Controller implements Initializable {
         Alert a = new Alert(Alert.AlertType.ERROR, "No Choice Selected", ButtonType.OK);
         a.showAndWait();
 
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
     }
 }
