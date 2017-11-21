@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import buildify.Buildify;
 import buildify.Controller.Template3.ChoiceQuestion;
+import buildify.Controller.Template3.TextQuestion;
 import java.io.File;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -78,26 +79,24 @@ public class Template3Controller implements Initializable {
                 ("Single-Choice Question",
                 "Multi-Choice Question",
                 "Text Question");
-        try {
-            handleComboBoxAction(comboList);
-        } catch (IOException ex) {
-        }
+        handleComboBoxAction(comboList);
     }
     
-    private void handleComboBoxAction(ComboBox comboList) throws IOException {
+    private void handleComboBoxAction(ComboBox comboList) {
         comboList.getSelectionModel().selectedItemProperty().addListener(
                 (ob, old_val, new_val) -> {
                     String chosen = (String) comboList.getValue();
                     switch (chosen){
                         case "Single-Choice Question":
                         case "Multi-Choice Question":
-                            if (new_val == "Single-Choice Question"){
-                                ChoiceQuestion single = new ChoiceQuestion();
-                                pane.getChildren().add(single);
-                                System.out.println("bdsakhsdf");
-                            }
+                            ChoiceQuestion cq = new ChoiceQuestion();
+                            pane.getChildren().add(cq);
+                            System.out.println("choice");
                             break;
                         case "Text Question":
+                            TextQuestion tq = new TextQuestion();
+                            pane.getChildren().add(tq);
+                            System.out.println("text");
                             break;
                         default:
                             break;
