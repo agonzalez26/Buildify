@@ -13,11 +13,12 @@ import javafx.scene.layout.VBox;
  *
  * @author Maia
  */
-public class TextQuestion extends VBox {
+public class TextQuestionCreator extends VBox {
    private TextField Question;
-   public TextQuestion(){
+   public TextQuestionCreator(){
        Label qLabel = new Label("Enter the question:");
        Question = new TextField();
+       Question.setPrefWidth(100);
        this.getChildren().addAll(qLabel,Question);
 }
    

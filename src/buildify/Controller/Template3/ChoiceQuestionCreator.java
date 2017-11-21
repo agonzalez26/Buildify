@@ -15,16 +15,17 @@ import javafx.scene.layout.VBox;
  *
  * @author Maia
  */
-public class ChoiceQuestion extends VBox{
+public class ChoiceQuestionCreator extends VBox{
     TextField Question;
     TextArea Answers;
     
-    public ChoiceQuestion(){
+    public ChoiceQuestionCreator(){
         Label QLabel = new Label("Enter question here");
         Question = new TextField();
         
         Label ALabel = new Label("Enter answers here, separate by new lines.");
         Answers = new TextArea();
+        Answers.setWrapText(true);
         
         this.getChildren().addAll(QLabel,Question,ALabel,Answers);
     }

@@ -39,8 +39,8 @@
                   </font>
                 </Label>
                 <ComboBox fx:id="combo" layoutX="14.0" layoutY="64.0" prefHeight="21.0" prefWidth="222.0" />
-                <Pane fx:id="pane" layoutX="25.0" layoutY="117.0" prefHeight="354.0" prefWidth="200.0" />
-                <Button layoutX="97.0" layoutY="514.0" mnemonicParsing="false" text="Add Widget" />
+                <Pane fx:id="pane" layoutX="14.0" layoutY="117.0" maxHeight="354.0" maxWidth="222.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="354.0" prefWidth="222.0" />
+                <Button fx:id="addWidget" layoutX="97.0" layoutY="514.0" mnemonicParsing="false" text="Add Widget" onAction="#handleButtonAction" />
                 <!--                                <ComboBox fx:id="comboList" layoutX="43.0" layoutY="46.0" prefWidth="150.0" />
                                 <Button fx:id="addButton" layoutX="53.0" layoutY="456.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Add new Widget" />
                                 <GridPane fx:id="editTable" layoutY="99.0" prefHeight="265.0" prefWidth="250.0">
