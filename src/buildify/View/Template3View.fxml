@@ -33,12 +33,12 @@
           <items>
             <AnchorPane fx:id="createPane" maxWidth="350.0" minHeight="0.0" minWidth="250.0" prefHeight="602.0" prefWidth="248.0" style="-fx-background-color: #ffd3b6;">
               <children>
-                <Label layoutX="67.0" layoutY="14.0" text="Template Quiz" textAlignment="CENTER">
+                <Label id="fuck" fx:id="dang" layoutX="67.0" layoutY="14.0" text="Template Quiz" textAlignment="CENTER">
                   <font>
                     <Font size="18.0" />
                   </font>
                 </Label>
-                <ComboBox fx:id="comboList" layoutX="14.0" layoutY="64.0" prefHeight="21.0" prefWidth="222.0" />
+                <ComboBox fx:id="combo" layoutX="14.0" layoutY="64.0" prefHeight="21.0" prefWidth="222.0" />
                 <Pane fx:id="pane" layoutX="25.0" layoutY="117.0" prefHeight="354.0" prefWidth="200.0" />
                 <Button layoutX="97.0" layoutY="514.0" mnemonicParsing="false" text="Add Widget" />
                 <!--                                <ComboBox fx:id="comboList" layoutX="43.0" layoutY="46.0" prefWidth="150.0" />

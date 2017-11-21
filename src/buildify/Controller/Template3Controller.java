@@ -20,6 +20,7 @@ import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -67,36 +68,33 @@ public class Template3Controller implements Initializable {
     private Alert a;
     private Optional<ButtonType> result;
     @FXML
-    ComboBox comboList;
+    ComboBox combo;
     @FXML
     Pane pane;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // setting the values into the choice box
-        comboList = new ComboBox<>();
-        comboList.getItems().addAll
+        combo.getItems().addAll
                 ("Single-Choice Question",
                 "Multi-Choice Question",
                 "Text Question");
-        handleComboBoxAction(comboList);
+        handleComboBoxAction(combo);
     }
     
     private void handleComboBoxAction(ComboBox comboList) {
-        comboList.getSelectionModel().selectedItemProperty().addListener(
+        comboList.valueProperty().addListener(
                 (ob, old_val, new_val) -> {
                     String chosen = (String) comboList.getValue();
+                    pane.getChildren().clear();
                     switch (chosen){
                         case "Single-Choice Question":
                         case "Multi-Choice Question":
                             ChoiceQuestion cq = new ChoiceQuestion();
                             pane.getChildren().add(cq);
-                            System.out.println("choice");
                             break;
                         case "Text Question":
                             TextQuestion tq = new TextQuestion();
                             pane.getChildren().add(tq);
-                            System.out.println("text");
                             break;
                         default:
                             break;
