@@ -4,9 +4,10 @@
     http://www.mkyong.com/java/jaxb-hello-world-example/
     https://stackoverflow.com/questions/16240734/how-to-marshal-unmarshal-java-objects-with-private-fields-using-jaxb
  */
-package buildify.Model;
+package buildify.SaveEngine;
 
-import buildify.Model.Saveable.*;
+import buildify.SaveEngine.SaveableWidget.SaveableLabel;
+import buildify.SaveEngine.SaveableWidget.SaveableWidget;
 import java.io.File;
 import java.util.Vector;
 import javafx.scene.control.Label;

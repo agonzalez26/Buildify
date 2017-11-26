@@ -5,7 +5,7 @@
  */
 package buildify;
 
-import buildify.Model.Writer;
+import buildify.SaveEngine.Writer;
 import java.io.File;
 import javafx.scene.control.Label;
 
