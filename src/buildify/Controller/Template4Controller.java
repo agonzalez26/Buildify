@@ -98,7 +98,7 @@ public class Template4Controller implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        combo.getItems().addAll("Image","Text","Link");
+        combo.getItems().addAll("Image","Text");
         handleComboBoxAction(combo);
     }
 
@@ -134,10 +134,10 @@ public class Template4Controller implements Initializable {
                     pane.getChildren().add(v);
                     break;
                 case "Text":
-                    TextArea area = new TextArea();
-                    break;
-                case "Link":
-                    break;
+                    area = new TextArea();
+                    area.setMaxWidth(pane.getWidth());
+                    area.setPrefHeight(pane.getHeight());
+                    pane.getChildren().add(area);
                 default:
                     break;
             }
@@ -155,6 +155,9 @@ public class Template4Controller implements Initializable {
                     if (imview != null)
                         p.getChildren().add(imview);
                     break;
+                case "Text":
+                    Label l = new Label(area.getText());
+                    p.getChildren().add(l);
                 default:
                     break;
             }
