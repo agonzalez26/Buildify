@@ -63,7 +63,7 @@ public class ImagePicker {
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Choose a file");
         chooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.png", "*.gif"));
-        File f = chooser.showSaveDialog(ownerWindow);
+        File f = chooser.showOpenDialog(ownerWindow);
         if (f != null){
             return f.getAbsolutePath();
         } else {
