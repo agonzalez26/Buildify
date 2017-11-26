@@ -38,6 +38,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import buildify.Image.*;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
@@ -95,6 +96,7 @@ public class Template4Controller implements Initializable {
     double orgTranslateX, orgTranslateY;
     TextArea area;
     ImageView imview;
+    Slider scale;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -114,23 +116,24 @@ public class Template4Controller implements Initializable {
                             (event) -> {
                                 ImagePicker ip = new ImagePicker(getOwnerWindow(combo));
                                 ip.addImageHandler(
-                                    (ImageView iv) -> imview = iv
+                                    (ImageView iv) -> {
+                                            imview = iv;
+                                            System.out.println("dasdfa");
+                                        }
+                                        
                                 );
                             }
                     );
                     
-                    Slider width = new Slider();
-                    width.setMin(1.0);
-                    width.setMax(100.0);
-                    width.setShowTickLabels(true);
-                    width.setShowTickMarks(true);
-                    Slider height = new Slider();
-                    height.setMin(1.0);
-                    height.setMax(100.0);
-                    height.setShowTickLabels(true);
-                    height.setShowTickMarks(true);
+                    Label l = new Label("Leave slider at 0.0 for default size \nHeight:");
+                    scale = new Slider();
+                    scale.setMin(0.0);
+                    scale.setMax(500.0);
+                    scale.setShowTickLabels(true);
+                    scale.setShowTickMarks(true);
+                    scale.setPrefWidth(pane.getWidth());
                     VBox v = new VBox();
-                    v.getChildren().addAll(b,width,height);
+                    v.getChildren().addAll(b,l,scale);
                     pane.getChildren().add(v);
                     break;
                 case "Text":
@@ -153,6 +156,7 @@ public class Template4Controller implements Initializable {
             switch ((String) combo.getValue()) {
                 case "Image":
                     if (imview != null)
+                        //imview.setFitHeight(scale.getValue());
                         p.getChildren().add(imview);
                     break;
                 case "Text":

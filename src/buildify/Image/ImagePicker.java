@@ -7,6 +7,7 @@ package buildify.Image;
 
 import java.awt.Desktop;
 import java.io.File;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Optional;
@@ -43,7 +44,8 @@ public class ImagePicker {
         if (result.get().getText().equals("My Computer")){
             String path = pickFile();
             if (path != null){
-                imageView = new ImageView(new Image(path));
+                Image im = new Image("file:"+path);
+                imageView = new ImageView(im);
                 for (ImageHandler ih: imageHandlers){
                     ih.handle(imageView);
                 }

@@ -38,10 +38,9 @@
                     <Font size="18.0" />
                   </font>
                 </Label>
-                <ComboBox fx:id="combo" layoutX="67.0" layoutY="67.0" prefHeight="21.0" prefWidth="117.0">
-                </ComboBox>
-                <Button fx:id="addWidget" layoutX="83.0" layoutY="530.0" mnemonicParsing="false" text="Add Widget" />
-                <Pane fx:id="pane" layoutX="26.0" layoutY="106.0" prefHeight="397.0" prefWidth="200.0" />
+                <ComboBox fx:id="combo" layoutX="67.0" layoutY="67.0" prefHeight="21.0" prefWidth="117.0" />
+                <Button fx:id="addWidget" layoutX="83.0" layoutY="530.0" mnemonicParsing="false" text="Add Widget" onAction="#handleButtonAction"/>
+                <Pane fx:id="pane" layoutX="14.0" layoutY="106.0" prefHeight="397.0" prefWidth="222.0" />
                 <!--where you add your code-->
                 <!--                                <ComboBox fx:id="comboList" layoutX="43.0" layoutY="46.0" prefWidth="150.0" />
                                 <Button fx:id="addButton" layoutX="53.0" layoutY="456.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Add new Widget" />
