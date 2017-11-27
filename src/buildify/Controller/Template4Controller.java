@@ -6,25 +6,45 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import buildify.Buildify;
+import buildify.Controller.Template3.ChoiceQuestionCreator;
+import buildify.Controller.Template3.MultiChoiceQuestionWidget;
+import buildify.Controller.Template3.SingleChoiceQuestionWidget;
+import buildify.Controller.Template3.TextQuestionCreator;
+import buildify.Controller.Template3.TextQuestionWidget;
 import java.io.File;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.WritableImage;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
+import buildify.Image.*;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TextArea;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+import javafx.stage.Window;
 
 public class Template4Controller implements Initializable {
 
@@ -63,6 +83,153 @@ public class Template4Controller implements Initializable {
     private MenuItem aboutM;
     private Alert a;
     private Optional<ButtonType> result;
+    @FXML
+    ComboBox combo;
+    @FXML
+    Pane pane;
+    @FXML
+    Button addWidget;
+    ChoiceQuestionCreator cq;
+    TextQuestionCreator tq;
+    //works for the onDrag methods inside the fxml
+    double orgSceneX, orgSceneY;
+    double orgTranslateX, orgTranslateY;
+    TextArea area;
+    ImageView imview;
+    Slider scale;
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        combo.getItems().addAll("Image","Text");
+        handleComboBoxAction(combo);
+    }
+
+    private void handleComboBoxAction(ComboBox comboList) {
+        comboList.valueProperty().addListener((ob, old_val, new_val) -> {
+            String chosen = (String) comboList.getValue();
+            pane.getChildren().clear();
+            switch (chosen) {
+                case "Image":
+                    Button b = new Button("Select Image");
+                    
+                    b.setOnAction(
+                            (event) -> {
+                                ImagePicker ip = new ImagePicker(getOwnerWindow(combo));
+                                ip.addImageHandler(
+                                    (ImageView iv) -> {
+                                            imview = iv;
+                                            System.out.println("dasdfa");
+                                        }
+                                        
+                                );
+                            }
+                    );
+                    
+                    Label l = new Label("Leave slider at 0.0 for default size \nHeight:");
+                    scale = new Slider();
+                    scale.setMin(0.0);
+                    scale.setMax(500.0);
+                    scale.setShowTickLabels(true);
+                    scale.setShowTickMarks(true);
+                    scale.setPrefWidth(pane.getWidth());
+                    VBox v = new VBox();
+                    v.getChildren().addAll(b,l,scale);
+                    pane.getChildren().add(v);
+                    break;
+                case "Text":
+                    area = new TextArea();
+                    area.setMaxWidth(pane.getWidth());
+                    area.setPrefHeight(pane.getHeight());
+                    pane.getChildren().add(area);
+                default:
+                    break;
+            }
+
+        }
+        );
+    }
+
+    @FXML
+    private void handleButtonAction(ActionEvent event) throws IOException {
+        Pane p = new Pane();
+        if (event.getSource() == addWidget) {
+            switch ((String) combo.getValue()) {
+                case "Image":
+                    if (imview != null)
+                        //imview.setFitHeight(scale.getValue());
+                        p.getChildren().add(imview);
+                    break;
+                case "Text":
+                    Label l = new Label(area.getText());
+                    p.getChildren().add(l);
+                default:
+                    break;
+            }
+            
+            p.addEventHandler(MouseEvent.MOUSE_DRAGGED, new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent t) {
+                    try {
+                        nodeDrag(t);
+                    } catch (IOException e) {
+
+                    }
+
+                }
+            });
+            p.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent t) {
+                    try {
+                        nodePress(t);
+                    } catch (IOException e) {
+
+                    }
+
+                }
+            });
+            p.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent t) {
+                    try {
+                        nodeRemove(t);
+                    } catch (IOException ex) {
+                    }
+                }
+
+            });
+        }
+        if (!p.getChildren().isEmpty()) {
+            previewPane.getChildren().add(p);
+        }
+    }
+
+    private void nodeRemove(MouseEvent event) throws IOException {
+        if (event.getButton().equals(MouseButton.PRIMARY)) {
+            if (event.getClickCount() == 2) {
+                System.out.println("double clicked");
+                previewPane.getChildren().remove(((Node) (event.getSource())));
+            }
+        }
+
+    }
+
+    private void nodeDrag(MouseEvent event) throws IOException {
+        double offsetX = event.getSceneX() - orgSceneX;
+        double offsetY = event.getSceneY() - orgSceneY;
+        double newTranslateX = orgTranslateX + offsetX;
+        double newTranslateY = orgTranslateY + offsetY;
+
+        ((Node) (event.getSource())).setTranslateX(newTranslateX);
+        ((Node) (event.getSource())).setTranslateY(newTranslateY);
+    }
+
+    private void nodePress(MouseEvent t) throws IOException {
+        orgSceneX = t.getSceneX();
+        orgSceneY = t.getSceneY();
+        orgTranslateX = ((Node) (t.getSource())).getTranslateX();
+        orgTranslateY = ((Node) (t.getSource())).getTranslateY();
+    }
 
     @FXML
     private void handleMenuAction(ActionEvent event) throws IOException {
@@ -148,8 +315,12 @@ public class Template4Controller implements Initializable {
         Alert a = new Alert(Alert.AlertType.ERROR, "No Choice Selected", ButtonType.OK);
         a.showAndWait();
     }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-    }
+    
+    private Window getOwnerWindow(Node n){ //you have to build this helper yourself :/
+		Scene parentScene = n.getScene(); //is null when if it's never added to a node in the scene. 
+		if (parentScene != null){
+			return parentScene.getWindow();	//still nullable!! if scene hasn't been added to a window
+		}
+		return null;
+	}
 }

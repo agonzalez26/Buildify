@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package buildify.Model.Saveable;
+package buildify.SaveEngine.SaveableWidget;
 
 import javafx.scene.Node;
 import javafx.scene.control.Label;
