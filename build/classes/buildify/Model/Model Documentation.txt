@@ -15,5 +15,9 @@ Writer.java
 	The writer is going to use the library JAXB. Here's a quick explaination for it: http://www.mkyong.com/java/jaxb-hello-world-example/
 	
 OPEN QUESTIONS:
-	1. Do we really need SaveableWidgets? Or can we save Nodes to xml directly?
-	2. Is it possible to save a node's private/readonly properties to XML? Many Node properties, like a Label's text for example, are only accessible through Getters and Setters. Here's a potential solution: https://stackoverflow.com/questions/16240734/how-to-marshal-unmarshal-java-objects-with-private-fields-using-jaxb Except Java's node classes don't have xml attributes!!! So this may still be the thing that makes an intermediate class (like SaveableWidget) necessary.
+	1. Is it possible to save a node's private/readonly properties to XML? Many Node properties, like a Label's text for example, are only accessible through Getters and Setters. Here's a potential solution:
+		https://stackoverflow.com/questions/16240734/how-to-marshal-unmarshal-java-objects-with-private-fields-using-jaxb 
+		
+		Except Java's node classes don't have xml attributes!!! So this may still be the thing that makes an intermediate class (like SaveableWidget) necessary.
+	
+		Currently, I'm working on testing out the intermediate Saveable classes, made a Label to start with.

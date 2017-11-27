@@ -6,7 +6,10 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import buildify.Buildify;
+import java.awt.Desktop;
 import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +19,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -27,6 +31,8 @@ import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 
 //https://stackoverflow.com/questions/32342864/applying-mvc-with-javafx
+//https://stackoverflow.com/questions/24202337/javafx-open-url-in-chrome-browser
+
 public class Template3Controller implements Initializable {
 
     @FXML
@@ -62,7 +68,22 @@ public class Template3Controller implements Initializable {
     private MenuItem aboutM;
     private Alert a;
     private Optional<ButtonType> result;
+    @FXML
+    private Button Website;
 
+    @FXML
+    private void handleButtonAction(ActionEvent event) throws URISyntaxException{
+        if(event.getSource() == Website){
+            try {
+            Desktop.getDesktop().browse(new URI("http://www.google.com"));
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        } catch (URISyntaxException e1) {
+            e1.printStackTrace();
+        }
+        }
+        
+    }
     @FXML
     private void handleMenuAction(ActionEvent event) throws IOException {
         if (event.getSource() == back) {
