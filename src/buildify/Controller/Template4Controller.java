@@ -38,11 +38,14 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import buildify.Image.*;
+import java.net.URI;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.ImageViewBuilder;
 import javafx.scene.layout.VBox;
 import javafx.stage.Window;
 
@@ -95,14 +98,30 @@ public class Template4Controller implements Initializable {
     double orgSceneX, orgSceneY;
     double orgTranslateX, orgTranslateY;
     TextArea area;
-    ImageView imview;
     Slider scale;
+    String imagePath;
+    ImagePicker imagePicker;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         combo.getItems().addAll("Image","Text");
         handleComboBoxAction(combo);
+        handleImage();
     }
+    
+    private void handleImage(){
+        imagePicker= new ImagePicker(getOwnerWindow(combo));
+        imagePicker.addStringHandler(
+                (String s) -> {
+                    imagePath = s;
+                }
+        );
+        imagePicker.addStringHandler(
+                (String s) -> {
+                    imagePath = s;
+                }
+        );
+       }
 
     private void handleComboBoxAction(ComboBox comboList) {
         comboList.valueProperty().addListener((ob, old_val, new_val) -> {
@@ -111,17 +130,9 @@ public class Template4Controller implements Initializable {
             switch (chosen) {
                 case "Image":
                     Button b = new Button("Select Image");
-                    
                     b.setOnAction(
                             (event) -> {
-                                ImagePicker ip = new ImagePicker(getOwnerWindow(combo));
-                                ip.addImageHandler(
-                                    (ImageView iv) -> {
-                                            imview = iv;
-                                            System.out.println("dasdfa");
-                                        }
-                                        
-                                );
+                                imagePicker.pickImage();
                             }
                     );
                     
@@ -148,16 +159,35 @@ public class Template4Controller implements Initializable {
         }
         );
     }
-
+    
+    private ImageView makeImageView(String s){
+        ImageView imageView;
+        //System.out.print(s);
+        Boolean isURL = s.contains("www");
+        Boolean isFile = s.startsWith("file");
+        if (isURL){
+            imageView = ImageViewBuilder.create()
+                .image(new Image(s))
+                .build();
+        } else if (isFile){
+            imageView = new ImageView(new Image(s));
+        } else {
+            return null;
+        }
+        return imageView;
+    }
+    
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
         Pane p = new Pane();
         if (event.getSource() == addWidget) {
             switch ((String) combo.getValue()) {
                 case "Image":
-                    if (imview != null)
-                        //imview.setFitHeight(scale.getValue());
-                        p.getChildren().add(imview);
+                    System.out.println("foooo " + imagePath);
+                    ImageView iv = makeImageView(imagePath);
+                    iv.setPreserveRatio(true);
+                    iv.setFitHeight(scale.getValue());
+                    p.getChildren().add(iv);
                     break;
                 case "Text":
                     Label l = new Label(area.getText());
