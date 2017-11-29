@@ -39,6 +39,7 @@ import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import buildify.Image.*;
 import java.net.URI;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
@@ -132,7 +133,11 @@ public class Template4Controller implements Initializable {
                     Button b = new Button("Select Image");
                     b.setOnAction(
                             (event) -> {
-                                imagePicker.pickImage();
+                                try{
+                                    imagePicker.pickImage();
+                                }catch(Exception e){
+                                    Alert bad = new Alert(AlertType.ERROR,e.toString());
+                                }
                             }
                     );
                     
@@ -163,12 +168,13 @@ public class Template4Controller implements Initializable {
     private ImageView makeImageView(String s){
         ImageView imageView;
         //System.out.print(s);
-        Boolean isURL = s.contains("www");
+        Boolean isURL = s.contains("http");
         Boolean isFile = s.startsWith("file");
         if (isURL){
-            imageView = ImageViewBuilder.create()
-                .image(new Image(s))
-                .build();
+            imageView = new ImageView(new Image(s));
+//            imageView = ImageViewBuilder.create()
+//                .image(new Image(s))
+//                .build();
         } else if (isFile){
             imageView = new ImageView(new Image(s));
         } else {
