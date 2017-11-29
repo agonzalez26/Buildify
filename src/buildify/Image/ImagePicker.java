@@ -35,54 +35,53 @@ public class ImagePicker {
         this.ownerWindow = ownerWindow;
     }
     
-    public void pickImage(){
+    public void pickImage() throws Exception {
         Alert a = new Alert(Alert.AlertType.CONFIRMATION,"Where would you like to pull an image from?",
                 new ButtonType("My Computer", ButtonBar.ButtonData.OK_DONE),
                 new ButtonType("Online", ButtonBar.ButtonData.OK_DONE));
         Optional<ButtonType> result = a.showAndWait();
         if (result.get().getText().equals("My Computer")){
-            URI foo = pickFile();
+            path = pickFile();
             for (StringHandler h : handlers){
-                path = foo.toString();
                 h.handle(path);
             }
         } else if (result.get().getText().equals("Online")){
-            URL foo = pickURL();
+            path = pickURL();
             for (StringHandler h : handlers){
-                path = foo.toString();
                 h.handle(path);
             }
         } else {
-            path = null;
+            throw Exception("Valid path was not found!");
         }
     }
     
-    public URI pickFile(){
+    public String pickFile(){
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Choose a file");
         chooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.png", "*.gif"));
         File f = chooser.showOpenDialog(ownerWindow);
         if (f != null){
-            return f.toURI();
+            return f.toURI().toString();
         } else {
             return null;
         }
     }
     
-    public URL pickURL(){
+    public String pickURL(){
         TextInputDialog tid = new TextInputDialog("Enter Image URL");
         Optional<String> input = tid.showAndWait();
         if (input.get() != null){
-            Boolean isImage = input.get().contains(".jpg") ||
+            Boolean isImage = input.get().contains(".jpeg") ||
                     input.get().contains(".png") ||
                     input.get().contains(".gif");
             if (isImage){
-                try{
-                    URL blah = new URL(input.get());
-                    return blah;
-                }catch(MalformedURLException e){
-                    return null;
-                }
+                return input.get();
+//                try{
+//                    URL blah = new URL(input.get());
+//                    return blah;
+//                }catch(MalformedURLException e){
+//                    return null;
+//                }
             }else {
                 return null;
             }
@@ -96,5 +95,9 @@ public class ImagePicker {
     
     public void addStringHandler(StringHandler h){
 		handlers.add(h);
+    }
+
+    private Exception Exception(String s) {
+        throw new UnsupportedOperationException(s); //To change body of generated methods, choose Tools | Templates.
     }
 }
