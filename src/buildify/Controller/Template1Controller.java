@@ -13,7 +13,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -342,7 +341,7 @@ public class Template1Controller implements Initializable {
             a = new Alert(Alert.AlertType.INFORMATION, "Developed by Alma Gonzalez", ButtonType.OK);
             a.showAndWait();
         } else if (event.getSource() == aboutM) {
-            a = new Alert(Alert.AlertType.INFORMATION, "Developed by Maia", ButtonType.OK);
+            a = new Alert(Alert.AlertType.INFORMATION, "Developed by Maia Ross", ButtonType.OK);
             a.showAndWait();
         } else {
             System.out.println("Apples");

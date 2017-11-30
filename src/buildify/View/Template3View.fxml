@@ -77,8 +77,8 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="About" fx:id="helpMenu">
                   <items>
-                    <MenuItem mnemonicParsing="false" onAction="#handleMenuAction" text="AG" fx:id="aboutA" />
-                    <MenuItem mnemonicParsing="false" onAction="#handleMenuAction" text="M" fx:id="aboutM" />
+                    <MenuItem mnemonicParsing="false" onAction="#handleMenuAction" text="Read about Alma Gonzalez" fx:id="aboutA" />
+                    <MenuItem mnemonicParsing="false" onAction="#handleMenuAction" text="Read about Maia Ross" fx:id="aboutM" />
                   </items>
                 </Menu>
               </menus>

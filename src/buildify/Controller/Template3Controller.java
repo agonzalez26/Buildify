@@ -8,8 +8,6 @@ import java.util.ResourceBundle;
 import buildify.Buildify;
 import buildify.Controller.Template3.*;
 import java.io.File;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

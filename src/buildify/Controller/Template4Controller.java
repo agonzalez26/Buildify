@@ -38,7 +38,6 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import buildify.Image.*;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
@@ -155,9 +154,14 @@ public class Template4Controller implements Initializable {
         if (event.getSource() == addWidget) {
             switch ((String) combo.getValue()) {
                 case "Image":
-                    if (imview != null)
+                    if (imview != null){
                         //imview.setFitHeight(scale.getValue());
-                        p.getChildren().add(imview);
+//                        p.getChildren().add(new Label("Asdas"));
+                    System.out.println(imview.getId());
+//                    imview.
+//                        p.getChildren().add(imview);
+//                          previewPane.getChildren().add(imview);
+                    }
                     break;
                 case "Text":
                     Label l = new Label(area.getText());
@@ -316,10 +320,10 @@ public class Template4Controller implements Initializable {
         a.showAndWait();
     }
     
-    private Window getOwnerWindow(Node n){ //you have to build this helper yourself :/
-		Scene parentScene = n.getScene(); //is null when if it's never added to a node in the scene. 
+    private Window getOwnerWindow(Node n){
+		Scene parentScene = n.getScene();
 		if (parentScene != null){
-			return parentScene.getWindow();	//still nullable!! if scene hasn't been added to a window
+			return parentScene.getWindow();	
 		}
 		return null;
 	}

@@ -41,50 +41,13 @@
                 <ComboBox fx:id="combo" layoutX="14.0" layoutY="64.0" prefHeight="21.0" prefWidth="222.0" />
                 <Pane fx:id="pane" layoutX="14.0" layoutY="117.0" maxHeight="354.0" maxWidth="222.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="354.0" prefWidth="222.0" />
                 <Button fx:id="addWidget" layoutX="97.0" layoutY="514.0" mnemonicParsing="false" text="Add Widget" onAction="#handleButtonAction" />
-                <!--                                <ComboBox fx:id="comboList" layoutX="43.0" layoutY="46.0" prefWidth="150.0" />
-                                <Button fx:id="addButton" layoutX="53.0" layoutY="456.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Add new Widget" />
-                                <GridPane fx:id="editTable" layoutY="99.0" prefHeight="265.0" prefWidth="250.0">
-                                    <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="124.0" minWidth="10.0" prefWidth="48.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="194.0" minWidth="10.0" prefWidth="177.0" />
-                                    </columnConstraints>
-                                    <rowConstraints>
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    </rowConstraints>
-                                    <children>
-                                        <TextField fx:id="NameText" alignment="CENTER" prefHeight="31.0" prefWidth="126.0" GridPane.columnIndex="1">
-                                            <effect>
-                                                <Glow />
-                                            </effect>
-                                        </TextField>
-                                        <Label text="Name" />
-                                    </children>
-                                </GridPane>
-                                <Button fx:id="backButton" layoutX="21.0" layoutY="521.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: #431f3e;;" text="Back" textFill="WHITE" />-->
-              </children>
+ </children>
             </AnchorPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: cec2d3;">
               <center>
                 <AnchorPane fx:id="previewPane" minHeight="0.0" minWidth="0.0" prefHeight="1000.0" prefWidth="1000.0" style="-fx-background-color: #ffaaa5;" BorderPane.alignment="CENTER">
                   <children>
-                    <!--                                        <GridPane prefHeight="566.0" prefWidth="540.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                            <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
-                                            <children>
-                                                <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                            </children>
-                                        </GridPane>-->
+
                   </children>
                 </AnchorPane>
               </center>
@@ -114,8 +77,8 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="About" fx:id="helpMenu">
                   <items>
-                    <MenuItem mnemonicParsing="false" onAction="#handleMenuAction" text="AG" fx:id="aboutA" />
-                    <MenuItem mnemonicParsing="false" onAction="#handleMenuAction" text="M" fx:id="aboutM" />
+                    <MenuItem mnemonicParsing="false" onAction="#handleMenuAction" text="Read about Alma Gonzalez" fx:id="aboutA" />
+                    <MenuItem mnemonicParsing="false" onAction="#handleMenuAction" text="Read about Maia Ross" fx:id="aboutM" />
                   </items>
                 </Menu>
               </menus>

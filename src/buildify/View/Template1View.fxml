@@ -170,8 +170,8 @@
                                 </Menu>
                                 <Menu fx:id="helpMenu" mnemonicParsing="false" text="About">
                                     <items>
-                                        <MenuItem fx:id="aboutA" mnemonicParsing="false" onAction="#handleMenuAction" text="AG" />
-                                        <MenuItem fx:id="aboutM" mnemonicParsing="false" onAction="#handleMenuAction" text="M" />                                    
+                                        <MenuItem fx:id="aboutA" mnemonicParsing="false" onAction="#handleMenuAction" text="Read about Alma Gonzalez" />
+                                        <MenuItem fx:id="aboutM" mnemonicParsing="false" onAction="#handleMenuAction" text="Read about Maia Ross" />                                    
                                     </items>
                                 </Menu>
                             </menus>
