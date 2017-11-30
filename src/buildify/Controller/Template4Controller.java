@@ -38,10 +38,18 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import buildify.Image.*;
+<<<<<<< HEAD
+=======
+import java.net.URI;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.CheckBox;
+>>>>>>> 9bc355d1e2b7fc137f701b87efca954b4547e6cb
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.ImageViewBuilder;
 import javafx.scene.layout.VBox;
 import javafx.stage.Window;
 
@@ -94,14 +102,30 @@ public class Template4Controller implements Initializable {
     double orgSceneX, orgSceneY;
     double orgTranslateX, orgTranslateY;
     TextArea area;
-    ImageView imview;
     Slider scale;
+    String imagePath;
+    ImagePicker imagePicker;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         combo.getItems().addAll("Image","Text");
         handleComboBoxAction(combo);
+        handleImage();
     }
+    
+    private void handleImage(){
+        imagePicker= new ImagePicker(getOwnerWindow(combo));
+        imagePicker.addStringHandler(
+                (String s) -> {
+                    imagePath = s;
+                }
+        );
+        imagePicker.addStringHandler(
+                (String s) -> {
+                    imagePath = s;
+                }
+        );
+       }
 
     private void handleComboBoxAction(ComboBox comboList) {
         comboList.valueProperty().addListener((ob, old_val, new_val) -> {
@@ -110,17 +134,13 @@ public class Template4Controller implements Initializable {
             switch (chosen) {
                 case "Image":
                     Button b = new Button("Select Image");
-                    
                     b.setOnAction(
                             (event) -> {
-                                ImagePicker ip = new ImagePicker(getOwnerWindow(combo));
-                                ip.addImageHandler(
-                                    (ImageView iv) -> {
-                                            imview = iv;
-                                            System.out.println("dasdfa");
-                                        }
-                                        
-                                );
+                                try{
+                                    imagePicker.pickImage();
+                                }catch(Exception e){
+                                    Alert bad = new Alert(AlertType.ERROR,e.toString());
+                                }
                             }
                     );
                     
@@ -147,13 +167,32 @@ public class Template4Controller implements Initializable {
         }
         );
     }
-
+    
+    private ImageView makeImageView(String s){
+        ImageView imageView;
+        //System.out.print(s);
+        Boolean isURL = s.contains("http");
+        Boolean isFile = s.startsWith("file");
+        if (isURL){
+            imageView = new ImageView(new Image(s));
+//            imageView = ImageViewBuilder.create()
+//                .image(new Image(s))
+//                .build();
+        } else if (isFile){
+            imageView = new ImageView(new Image(s));
+        } else {
+            return null;
+        }
+        return imageView;
+    }
+    
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
         Pane p = new Pane();
         if (event.getSource() == addWidget) {
             switch ((String) combo.getValue()) {
                 case "Image":
+<<<<<<< HEAD
                     if (imview != null){
                         //imview.setFitHeight(scale.getValue());
 //                        p.getChildren().add(new Label("Asdas"));
@@ -162,6 +201,13 @@ public class Template4Controller implements Initializable {
 //                        p.getChildren().add(imview);
 //                          previewPane.getChildren().add(imview);
                     }
+=======
+                    System.out.println("foooo " + imagePath);
+                    ImageView iv = makeImageView(imagePath);
+                    iv.setPreserveRatio(true);
+                    iv.setFitHeight(scale.getValue());
+                    p.getChildren().add(iv);
+>>>>>>> 9bc355d1e2b7fc137f701b87efca954b4547e6cb
                     break;
                 case "Text":
                     Label l = new Label(area.getText());
