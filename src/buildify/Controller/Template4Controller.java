@@ -357,10 +357,10 @@ public class Template4Controller implements Initializable {
         a.showAndWait();
     }
     
-    private Window getOwnerWindow(Node n){ //you have to build this helper yourself :/
-		Scene parentScene = n.getScene(); //is null when if it's never added to a node in the scene. 
+    private Window getOwnerWindow(Node n){ 
+		Scene parentScene = n.getScene();  
 		if (parentScene != null){
-			return parentScene.getWindow();	//still nullable!! if scene hasn't been added to a window
+			return parentScene.getWindow();	
 		}
 		return null;
 	}
