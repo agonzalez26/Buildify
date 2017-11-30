@@ -8,7 +8,11 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+<<<<<<< HEAD
     <jar href="Buildify.jar" size="74354" download="eager" />
+=======
+    <jar href="Buildify.jar" size="74007" download="eager" />
+>>>>>>> b6af8c23e042d1205c314b61e7a00a4004c80ebe
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Buildify" >
     <param name="requiredFXVersion" value="8.0+"/>
