@@ -34,6 +34,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
@@ -333,7 +334,7 @@ public class Template1Controller implements Initializable {
             stage.show();
         } else if (event.getSource() == save) {
             System.out.println("Saveing Template");
-        } else if (event.getSource() == saveScreenshot) {
+        } else if (event.getSource() == saveScreenshot) {        
             saveTemplate();
         } else if (event.getSource() == saveExit) {
             System.out.println("Saving and exit.");
@@ -359,15 +360,20 @@ public class Template1Controller implements Initializable {
     }
 
     private void saveTemplate() throws IOException {
-        WritableImage screenshot = borderPane.snapshot(new SnapshotParameters(), null);
-        fr = new File("Template1Screenshot.jpg");
-        try {
-            ImageIO.write(SwingFXUtils.fromFXImage(screenshot, null), "jpg", fr);
-            a = new Alert(Alert.AlertType.CONFIRMATION, "Screenshot saved: " + fr.getAbsolutePath(), ButtonType.OK);
-            a.showAndWait();
-        } catch (IOException e) {
-            a = new Alert(Alert.AlertType.ERROR, "Screenshot Not Saved", ButtonType.OK);
-            a.showAndWait();
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setContentText("Please enter screenshot name:");
+        Optional<String> r= dialog.showAndWait();
+        if(r.isPresent()){
+            WritableImage screenshot = borderPane.snapshot(new SnapshotParameters(), null);
+            fr = new File(r.get() + ".png");
+            try {
+                ImageIO.write(SwingFXUtils.fromFXImage(screenshot, null), "png", fr);
+                a = new Alert(Alert.AlertType.CONFIRMATION, "Screenshot saved: " + fr.getAbsolutePath(), ButtonType.OK);
+                a.showAndWait();
+            } catch (IOException e) {
+                a = new Alert(Alert.AlertType.ERROR, "Screenshot Not Saved", ButtonType.OK);
+                a.showAndWait();
+            }
         }
     }
 
