@@ -122,16 +122,13 @@ public class Template3Controller implements Initializable {
             switch ((String) combo.getValue()) {
                 case "Single-Choice Question":
                     SingleChoiceQuestionWidget single = new SingleChoiceQuestionWidget(cq.getQuestion(), cq.getAnswers());
-                    //single.setMaxWidth(p.getWidth());
                     p.getChildren().add(single);
                 case "Multi-Choice Question":
                     MultiChoiceQuestionWidget multi = new MultiChoiceQuestionWidget(cq.getQuestion(), cq.getAnswers());
-                    //multi.setMaxWidth(p.getWidth());
                     p.getChildren().add(multi);
                     break;
                 case "Text Question":
                     TextQuestionWidget text = new TextQuestionWidget(tq.getQuestion());
-                    //text.setMaxWidth(300.0);
                     text.setMaxHeight(90.0);
                     p.getChildren().add(text);
                     break;

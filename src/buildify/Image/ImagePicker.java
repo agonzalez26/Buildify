@@ -72,6 +72,7 @@ public class ImagePicker {
         Optional<String> input = tid.showAndWait();
         if (input.get() != null){
             Boolean isImage = input.get().contains(".jpeg") ||
+                    input.get().contains(".jpg") ||
                     input.get().contains(".png") ||
                     input.get().contains(".gif");
             if (isImage){
