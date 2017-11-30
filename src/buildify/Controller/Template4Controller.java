@@ -305,7 +305,7 @@ public class Template4Controller implements Initializable {
             stage.setScene(scene);
             stage.show();
         } else if (event.getSource() == save) {
-            System.out.println("Saveing Template");
+            System.out.println("Saving Template");
         } else if (event.getSource() == saveScreenshot) {
             saveTemplate();
         } else if (event.getSource() == saveExit) {

@@ -343,7 +343,7 @@ public class Template2Controller implements Initializable {
             stage.setScene(scene);
             stage.show();
         } else if (event.getSource() == save) {
-            System.out.println("Saveing Template");
+            System.out.println("Saving Template");
         } else if (event.getSource() == saveScreenshot) {
             saveTemplate();
         } else if (event.getSource() == saveExit) {
