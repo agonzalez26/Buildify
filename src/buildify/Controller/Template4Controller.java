@@ -172,10 +172,8 @@ public class Template4Controller implements Initializable {
         Boolean isURL = s.contains("http");
         Boolean isFile = s.startsWith("file");
         if (isURL){
-            imageView = new ImageView(new Image(s));
-//            imageView = ImageViewBuilder.create()
-//                .image(new Image(s))
-//                .build();
+            Image i = new Image(s);
+            imageView = new ImageView(i);
         } else if (isFile){
             imageView = new ImageView(new Image(s));
         } else {
