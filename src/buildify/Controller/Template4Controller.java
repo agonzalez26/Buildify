@@ -38,12 +38,9 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import buildify.Image.*;
-<<<<<<< HEAD
-=======
 import java.net.URI;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.CheckBox;
->>>>>>> 9bc355d1e2b7fc137f701b87efca954b4547e6cb
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
@@ -192,22 +189,11 @@ public class Template4Controller implements Initializable {
         if (event.getSource() == addWidget) {
             switch ((String) combo.getValue()) {
                 case "Image":
-<<<<<<< HEAD
-                    if (imview != null){
-                        //imview.setFitHeight(scale.getValue());
-//                        p.getChildren().add(new Label("Asdas"));
-                    System.out.println(imview.getId());
-//                    imview.
-//                        p.getChildren().add(imview);
-//                          previewPane.getChildren().add(imview);
-                    }
-=======
                     System.out.println("foooo " + imagePath);
                     ImageView iv = makeImageView(imagePath);
                     iv.setPreserveRatio(true);
                     iv.setFitHeight(scale.getValue());
                     p.getChildren().add(iv);
->>>>>>> 9bc355d1e2b7fc137f701b87efca954b4547e6cb
                     break;
                 case "Text":
                     Label l = new Label(area.getText());
@@ -366,10 +352,10 @@ public class Template4Controller implements Initializable {
         a.showAndWait();
     }
     
-    private Window getOwnerWindow(Node n){
-		Scene parentScene = n.getScene();
+    private Window getOwnerWindow(Node n){ //you have to build this helper yourself :/
+		Scene parentScene = n.getScene(); //is null when if it's never added to a node in the scene. 
 		if (parentScene != null){
-			return parentScene.getWindow();	
+			return parentScene.getWindow();	//still nullable!! if scene hasn't been added to a window
 		}
 		return null;
 	}
