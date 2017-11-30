@@ -62,11 +62,9 @@ public class Template2Controller implements Initializable {
     private Menu fileMenu;
     @FXML
     private MenuItem back;
-    @FXML
     private MenuItem openT;
     @FXML
     private MenuItem newT;
-    @FXML
     private MenuItem saveExit;
     private MenuItem help;
     private Stage stage = null;
@@ -107,7 +105,6 @@ public class Template2Controller implements Initializable {
     private MenuItem aboutM;
     private Alert a;
     private Optional<ButtonType> result;
-    @FXML
     private MenuItem save;
 
     @Override
@@ -317,18 +314,6 @@ public class Template2Controller implements Initializable {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        } else if (event.getSource() == openT) {
-            if (checkSaved() == true) {
-                System.out.println("open");
-                stage = (Stage) menuBar.getScene().getWindow();
-                root = FXMLLoader.load(Buildify.class.getResource("View/TemplateView.fxml"));
-            } else {
-                stage = (Stage) menuBar.getScene().getWindow();
-                root = FXMLLoader.load(Buildify.class.getResource("View/Template2View.fxml"));
-            }
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
         } else if (event.getSource() == newT) {
             System.out.println("new Template");
             if (checkSaved() == true) {
@@ -342,12 +327,8 @@ public class Template2Controller implements Initializable {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        } else if (event.getSource() == save) {
-            System.out.println("Saving Template");
-        } else if (event.getSource() == saveScreenshot) {
+        }else if (event.getSource() == saveScreenshot) {
             saveTemplate();
-        } else if (event.getSource() == saveExit) {
-            System.out.println("Saving and exit.");
         } else if (event.getSource() == aboutA) {
             Alert a = new Alert(Alert.AlertType.INFORMATION, "Developed by Alma Gonzalez", ButtonType.OK);
             a.showAndWait();
@@ -378,7 +359,7 @@ public class Template2Controller implements Initializable {
     }
 
     private boolean checkSaved() {
-        a = new Alert(Alert.AlertType.INFORMATION, "Have you saved your template?", ButtonType.YES, ButtonType.NO);
+        a = new Alert(Alert.AlertType.INFORMATION, "Have you saved a screenshot of your template?", ButtonType.YES, ButtonType.NO);
         result = a.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.YES) {
             return true;

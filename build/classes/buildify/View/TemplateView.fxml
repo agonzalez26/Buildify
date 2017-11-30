@@ -59,7 +59,7 @@
             </ImageView>
           </graphic>
         </Button>
-        <Label alignment="CENTER" contentDisplay="CENTER" text="A's Decision" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+        <Label alignment="CENTER" contentDisplay="CENTER" text="Newsletter" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
           <font>
             <Font size="18.0" fx:id="x1" />
           </font>
